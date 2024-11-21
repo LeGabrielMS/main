@@ -53,7 +53,7 @@ class LoginPageState extends State<LoginPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => HomeScreen(username: username),
+          builder: (context) => NaviBar(username: username),
         ),
       );
     } else {

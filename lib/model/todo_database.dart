@@ -13,13 +13,14 @@ class ToDoDatabase extends ChangeNotifier {
     final toDos = await isar.toDos.where().findAll();
     currentToDos.clear();
     currentToDos.addAll(toDos);
-    notifyListeners();
+    notifyListeners(); // Notify the UI about changes
   }
 
   Future<void> addToDo(String title) async {
     final newToDo = ToDo()..title = title;
     await isar.writeTxn(() => isar.toDos.put(newToDo));
-    await fetchToDos();
+    await fetchToDos(); // Refresh the in-memory list
+    notifyListeners(); // Notify the UI about changes
   }
 
   Future<void> updateToDo(ToDo toDo,
@@ -27,11 +28,13 @@ class ToDoDatabase extends ChangeNotifier {
     if (newTitle != null) toDo.title = newTitle;
     if (isCompleted != null) toDo.isCompleted = isCompleted;
     await isar.writeTxn(() => isar.toDos.put(toDo));
-    await fetchToDos();
+    await fetchToDos(); // Refresh the in-memory list
+    notifyListeners(); // Notify the UI about changes
   }
 
   Future<void> deleteToDoById(int id) async {
     await isar.writeTxn(() => isar.toDos.delete(id));
-    await fetchToDos();
+    await fetchToDos(); // Refresh the in-memory list
+    notifyListeners(); // Notify the UI about changes
   }
 }

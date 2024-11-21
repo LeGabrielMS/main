@@ -33,7 +33,7 @@ class ToDoTile extends StatelessWidget {
           toDo.title,
           style: TextStyle(
             decoration: toDo.isCompleted ? TextDecoration.lineThrough : null,
-            color: Theme.of(context).colorScheme.inverseSurface,
+            color: Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
         trailing: Row(

@@ -5,16 +5,16 @@ import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 import 'package:main/screens/notes_screen.dart';
 import 'package:main/screens/todo_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class NaviBar extends StatefulWidget {
   final String username;
 
-  const HomeScreen({super.key, required this.username});
+  const NaviBar({super.key, required this.username});
 
   @override
-  HomeScreenState createState() => HomeScreenState();
+  NaviBarState createState() => NaviBarState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class NaviBarState extends State<NaviBar> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
